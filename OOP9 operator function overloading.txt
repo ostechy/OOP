@@ -1,0 +1,46 @@
+#include <iostream>
+class MyClass {
+private:
+ int value;
+public:
+ MyClass() { // Default Constructor
+ value = 0;
+ }
+ MyClass(int val) { // Parameterized Constructor
+ value = val;
+ }
+ void setValue(int val) { // Function Overloading
+ value = val;
+ }
+ void setValue(double val) {
+ value = static_cast<int>(val);
+ }
+ MyClass operator+(const MyClass& other) { // Operator Overloading
+ MyClass temp;
+ temp.value = this->value + other.value;
+ return temp;
+ }
+ void display() { // Display function
+ std::cout << "Value: " << value << std::endl;
+ }
+};
+int main() { // Creating objects using constructors
+ MyClass obj1; // Default Constructor
+ MyClass obj2(5); // Parameterized Constructor
+ std::cout << "Object 1:" << std::endl;
+ obj1.display();
+ std::cout << "\nObject 2:" << std::endl;
+ obj2.display();
+ obj1.setValue(10); // Function Overloading
+ obj2.setValue(7.8);
+ std::cout << "\nAfter Function Overloading:" << std::endl;
+ std::cout << "Object 1:" << std::endl;
+ obj1.display();
+ std::cout << "Object 2:" << std::endl;
+ obj2.display();
+ MyClass obj3 = obj1 + obj2; // Operator Overloading
+ std::cout << "\nAfter Operator Overloading:" << std::endl;
+ std::cout << "Object 3 (obj1 + obj2):" << std::endl;
+ obj3.display();
+ return 0;
+}

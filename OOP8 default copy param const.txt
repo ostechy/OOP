@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+class MyClass {
+private:
+ int value;
+ std::string name;
+public:
+ // Default Constructor
+ MyClass() {
+ value = 0;
+ name = "Default";
+ }
+ // Parameterized Constructor
+ MyClass(int val, const std::string& nm) {
+ value = val;
+ name = nm;
+ }
+ // Copy Constructor
+ MyClass(const MyClass& other) {
+ value = other.value;
+ name = other.name;
+ }
+ // Function to display the object's details
+ void display() {
+ std::cout << "Value: " << value << ", Name: " << name << std::endl;
+ }
+};
+int main() {
+ // Default Constructor
+ MyClass obj1;
+ std::cout << "Default Constructor:" << std::endl;
+ obj1.display();
+ // Parameterized Constructor
+ MyClass obj2(10, "Parameterized");
+ std::cout << "\nParameterized Constructor:" << std::endl;
+ obj2.display();
+ // Copy Constructor
+ MyClass obj3 = obj2;
+ std::cout << "\nCopy Constructor:" << std::endl;
+ obj3.display();
+ return 0;
+}
